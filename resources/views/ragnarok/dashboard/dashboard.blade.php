@@ -6,10 +6,9 @@
         <div class="row">
             <!-- Centered Tabs -->
             <ul class="nav nav-pills nav-justified">
-
                 @foreach($data as $row)
                     <li>
-                        <a href="{{$row->url}}?userId={{auth()->user()->userId}}">
+                        <a href="{{$row->url}}?uid={{$user->userId}}&usession={{$sessionCode}}">
                             <p>{{$row->name}}</p>
                             <img src="images/{{$row->logo}}" alt="" style="width:150px;"/>
                         </a>
@@ -17,6 +16,6 @@
                 @endforeach
             </ul>
         </div>
-        
     </div>
+
 @endsection
