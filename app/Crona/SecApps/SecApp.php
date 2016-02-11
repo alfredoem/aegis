@@ -1,4 +1,4 @@
-<?php namespace App\Ragnarok\SecApps;
+<?php namespace App\Crona\SecApps;
 
 use Illuminate\Database\Eloquent\Model;
 

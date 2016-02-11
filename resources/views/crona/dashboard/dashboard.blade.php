@@ -1,8 +1,12 @@
-@extends('common.ragnarok')
+@extends('common.crona')
 @section('content')
 
     <div class="container">
-        <h2>Ragnarok Application Registered <a href="{{url('auth/logout')}}"><i class="glyphicon glyphicon-log-out text-danger"></i></a></h2> 
+        <h2 class="text-center">
+            Ragnarok Application Registered <a href="{{url('auth/logout')}}" title="sign-out">
+                <i class="fa fa-sign-out  text-danger"></i>
+            </a>
+        </h2>
         <div class="row">
             <!-- Centered Tabs -->
             <ul class="nav nav-pills nav-justified">

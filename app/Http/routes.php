@@ -11,7 +11,7 @@ Route::group(['middleware' => 'auth'], function () {
         return view('welcome');
     });*/
 
-    Route::get('/', 'Ragnarok\DashboardController@getIndex');
+    Route::get('/', 'Crona\DashboardController@getIndex');
 
     //Route::controller('dashboard', 'Ragnarok\DashboardController');
 });

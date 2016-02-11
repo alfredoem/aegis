@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => Alfredoem\Ragnarok\SecUser::class,
+    'model' => Alfredoem\Ragnarok\SecUsers\SecUser::class,
 
     /*
     |--------------------------------------------------------------------------
