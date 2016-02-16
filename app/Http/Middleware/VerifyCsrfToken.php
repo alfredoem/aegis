@@ -12,7 +12,7 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        'ragnarok/api/v1/*',
+        'api/v1/*',
         'auth/login',
     ];
 }

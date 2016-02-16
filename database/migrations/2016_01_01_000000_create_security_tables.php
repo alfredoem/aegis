@@ -14,6 +14,8 @@ class CreateSecurityTables extends Migration
     {
         $this->secUsers();
         $this->secParameters();
+        $this->secApps();
+        $this->secUserSessions();
     }
 
     public function secParameters()
@@ -30,19 +32,19 @@ class CreateSecurityTables extends Migration
             $table->rememberToken();
         });
 
-        DB::table('SecParameters')->insert(array(
-            [
-                'name' => 'API_SECURITY_URL',
-                'description' => 'URL del servidor del API de seguridad',
-                'value'       => 'http://local.ragnarok.security.com/ragnarok/api/v1'
-            ],
-            [
-                'name' => 'SERVER_SECURITY_URL',
-                'description' => 'URL del servidor de seguridad',
-                'value'       => 'http://local.ragnarok.security.com'
-            ],
+        DB::table('SecParameters')->insert([
+            'name' => 'API_SECURITY_URL',
+            'description' => 'URL del api servidor de seguridad',
+            //'value'       => 'http://local.ragnarok.security.com/ragnarok/api/v1'
+            'value'       => 'http://172.16.11.237/ragnarok/public/api/v1'
+        ]);
 
-        ));
+        DB::table('SecParameters')->insert([
+            'name' => 'SERVER_SECURITY_URL',
+            'description' => 'URL del servidor de seguridad',
+            //'value'       => 'http://local.ragnarok.security.com'
+            'value'       => 'http://172.16.11.237/ragnarok/public'
+        ]);
     }
 
     public function secUsers()
@@ -63,12 +65,12 @@ class CreateSecurityTables extends Migration
         DB::table('SecUsers')->insert([
             'firstName' => 'Cloud',
             'lastName'  => 'Strife',
-            'email' => 'admin@shinra.com',
+            'email' => 'admin@ragnarok.com',
             'password' => bcrypt('admin'),
         ]);
     }
 
-    public function secApps()
+    public function secApps()// Ragnarok
     {
         \Schema::create('SecApps', function(Blueprint $table){
             $table->increments('appId');
@@ -79,13 +81,17 @@ class CreateSecurityTables extends Migration
             $table->string('url', '250');
             $table->tinyInteger('status')->unsigned();
         });
+    }
 
-        DB::table('SecApps')->insert([
-            'name' => 'Admin App',
-            'type'  => '1',
-            'url' => 'http://local.admin.app.com',
-            'status' => 1,
-        ]);
+    public function secUserSessions()// Ragnarok
+    {
+        \Schema::create('SecUserSessions', function(Blueprint $table){
+            $table->increments('appId');
+            $table->integer('userId');
+            $table->char('sessionCode', 15);
+            $table->char('status', 1);
+            $table->dateTime('datetimeIns');
+        });
     }
 
     /**
@@ -97,5 +103,7 @@ class CreateSecurityTables extends Migration
     {
         Schema::drop('SecUsers');
         Schema::drop('SecParameters');
+        Schema::drop('SecApps');
+        Schema::drop('SecUserSessions');
     }
 }

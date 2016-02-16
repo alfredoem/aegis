@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Crona;
 
+use Alfredoem\Ragnarok\AuthRagnarok;
 use Alfredoem\Ragnarok\SecUsers\SecUserSessions;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,9 +12,7 @@ class DashboardController extends Controller
     public function getIndex(Request $request)
     {
         $data = SecApp::wherestatus(1)->get();
-        $user = auth()->user();
-        $sessionCode = SecUserSessions::limit(1)->whereuserid($user->userId)->orderBy('userId', 'DESC')->get()[0]->sessionCode;
-        Auth::logout();
-        return  view('crona.dashboard.dashboard', compact('data', 'user', 'sessionCode'));
+        $user = AuthRagnarok::user();
+        return  view('crona.dashboard.dashboard', compact('data', 'user'));
     }
 }
