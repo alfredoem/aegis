@@ -1,11 +1,10 @@
 <?php namespace App\Http\Controllers\Crona;
 
 use Alfredoem\Ragnarok\AuthRagnarok;
-use Alfredoem\Ragnarok\SecUsers\SecUserSessions;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Crona\SecApps\SecApp;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 
 class DashboardController extends Controller
 {
@@ -13,6 +12,8 @@ class DashboardController extends Controller
     {
         $data = SecApp::wherestatus(1)->get();
         $user = AuthRagnarok::user();
-        return  view('crona.dashboard.dashboard', compact('data', 'user'));
+
+        return  Response::view('crona.dashboard.dashboard', compact('data', 'user'))
+                    ->header('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
     }
 }
