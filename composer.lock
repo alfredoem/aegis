@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/alfredoem/ragnarok.git",
-                "reference": "de0fcacc26495958a1347ce1a27c4f87c98423d1"
+                "reference": "7e5829f01ad4173fbd1a38ade5ecde60285a4155"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alfredoem/ragnarok/zipball/de0fcacc26495958a1347ce1a27c4f87c98423d1",
-                "reference": "de0fcacc26495958a1347ce1a27c4f87c98423d1",
+                "url": "https://api.github.com/repos/alfredoem/ragnarok/zipball/7e5829f01ad4173fbd1a38ade5ecde60285a4155",
+                "reference": "7e5829f01ad4173fbd1a38ade5ecde60285a4155",
                 "shasum": ""
             },
             "require": {
@@ -48,7 +48,7 @@
                 "laravel",
                 "packages"
             ],
-            "time": "2016-02-17 21:29:08"
+            "time": "2016-02-18 17:22:50"
         },
         {
             "name": "classpreloader/classpreloader",
